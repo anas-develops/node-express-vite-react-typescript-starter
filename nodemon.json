@@ -1,0 +1,6 @@
+{
+    "watch": ["./backend"],
+    "ext": "ts",
+    "ignore": [],
+    "exec": "rm -rf ./backend/dist && tsc && node ./backend/dist/app.js"
+}

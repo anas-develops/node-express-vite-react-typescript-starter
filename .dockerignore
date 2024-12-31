@@ -1,0 +1,36 @@
+# Node.js dependencies
+node_modules
+frontend/node_modules
+
+# Logs
+*.log
+logs/
+
+# Editor and IDE settings
+.vscode/
+.idea/
+
+# Local operating system files
+.DS_Store
+Thumbs.db
+
+# Git files
+.git
+.gitignore
+
+# Build artifacts
+dist/
+build/
+backend/dist/
+backend/build/
+frontend/dist
+
+# Configuration and transient files
+*.tsbuildinfo
+coverage/
+
+# Other configurations not needed in the container
+.prettierrc.json
+eslint.config.mjs
+nodemon.json
+frontend/eslint.config.js
