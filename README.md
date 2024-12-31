@@ -101,20 +101,46 @@ You can modify the source code in the backend and frontend directories, and the 
 ## Project Structure
 
 ```
-/node_modules           # Backend dependencies
-/frontend               # Frontend React app
-  /node_modules         # Frontend dependencies
-  /src                  # React app source code
-    /components         # React components
-    /pages              # React pages
-    /assets             # Images, styles, etc.
-/src                    # Backend (Express + Node.js) source code
-  /controllers          # Express controllers
-  /routes               # Express route handlers
-  /models               # Database models (if any)
-  /utils                # Utility functions
-/Dockerfile             # Dockerfile for building Docker image
-/docker-compose.yml     # Docker Compose configuration (optional)
+└── 📁backend
+    └── 📁modules
+        └── 📁sampleModule
+            └── 📁controllers
+                └── sampleController.ts
+            └── 📁routes
+                └── sampleRouter.ts
+    └── 📁startup
+        └── init.ts
+        └── router.ts
+        └── security.ts
+    └── .env
+    └── app.ts
+└── 📁frontend
+    └── 📁public
+        └── vite.svg
+    └── 📁src
+        └── App.css
+        └── App.tsx
+        └── 📁assets
+            └── react.svg
+        └── index.css
+        └── main.tsx
+        └── vite-env.d.ts
+    └── .gitignore
+    └── eslint.config.js
+    └── index.html
+    └── package.json
+    └── tsconfig.app.json
+    └── tsconfig.json
+    └── tsconfig.node.json
+    └── vite.config.ts
+    └── yarn.lock
+└── .gitignore
+└── .prettierrc.json
+└── eslint.config.mjs
+└── nodemon.json
+└── package.json
+└── tsconfig.json
+└── yarn.lock
 ```
 
 ## Contributing
