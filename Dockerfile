@@ -1,31 +1,27 @@
-# Use the official Node.js image with the specified version
+# Use the official Node.js image
 FROM node:22.11.0-alpine
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy only necessary files to the working directory
+# Copy and install backend dependencies first
 COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
 
-# Install backend dependencies using Yarn
-RUN yarn install
+# Copy and install frontend dependencies in a single step
+WORKDIR /app/frontend
+COPY frontend/package.json frontend/yarn.lock ./
+RUN yarn install --frozen-lockfile
 
-RUN mkdir frontend
-
-COPY /frontend/package.json /frontend/yarn.lock ./frontend
-
-RUN cd frontend && yarn install
-
-# Copy the remaining code
+# Copy the remaining code AFTER dependencies are installed (cache optimization)
+WORKDIR /app
 COPY . .
 
-# Build the javascript code
-RUN yarn build
+# Build backend and frontend
+RUN yarn build && yarn --cwd frontend build
 
-RUN cd frontend && yarn build
-
-# Expose the port the app runs on
+# Expose the application port
 EXPOSE 3000
 
-# Command to start the application
+# Start the application
 CMD ["yarn", "start"]
